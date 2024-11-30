@@ -22,7 +22,6 @@ Static NAT using Port Range on Cisco Router with existing NAT Overload -
 ## Existing NAT Overload Configuration
 
 ```cisco
-# existing router configuration
 inteface GigabitEthernet0/0
  ip address 64.65.66.67 255.255.255.0
  ip nat outside
