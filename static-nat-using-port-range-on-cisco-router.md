@@ -8,6 +8,14 @@ Static NAT using Port Range on Cisco Router -
 
 ## Scenario:
 
+1. 3rd Party Public Server (100.100.100.100) should be able to access their server box inside customer network
+2. Static NAT (Private: 10.11.12.14 - Public: 64.65.66.67) should be implemented but should only allow below ports:
+
+  TCP 5001
+  TCP/UDP 5002
+  UDP 5003
+  UDP 10000-10999
+
 ## Create and Configure VM instance
 
 ```shell
