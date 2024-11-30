@@ -11,17 +11,21 @@ Static NAT using Port Range on Cisco Router -
 ![alt text](https://github.com/hackd-art/networking-tips-and-tricks/blob/main/static-nat-using-port-range-on-cisco-router.png)
 
 1. 3rd Party Public Server (100.100.100.100) should be able to access the server box inside customer network
-2. Static NAT (Private: 10.11.12.14 - Public: 64.65.66.67) should be implemented but should only allow below ports inbound:
+2. There is an existing NAT overload using the same public IP of the customer router for user traffic going to the internet.
+3. Static NAT (Private: 10.11.12.14 - Public: 64.65.66.67) should be implemented but should only allow below ports inbound:
 
   TCP 5001<br>
   TCP/UDP 5002<br>
   UDP 5003<br>
   UDP 10000-10999<br>
 
-## Create and Configure VM instance
+## Customer Cisco Router Configuration
 
 ```shell
-# create VM image in GCP shell
+# existing router configuration
+inteface Gi0/0
+ ip address 64.65.66.67 255.255.255.0
+
 gcloud compute images create nested-ubuntu-focal --source-image-family=ubuntu-2004-lts --source-image-project=ubuntu-os-cloud --licenses https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx
 ```
 
