@@ -19,12 +19,19 @@ Static NAT using Port Range on Cisco Router -
   UDP 5003<br>
   UDP 10000-10999<br>
 
-## Customer Cisco Router Configuration
+## Configuration
 
 ```shell
 # existing router configuration
 inteface Gi0/0
  ip address 64.65.66.67 255.255.255.0
+ ip nat outside
+
+interface Gi0/1
+ ip address 10.11.12.13 255.255.255.0
+ ip nat inside
+
+
 
 gcloud compute images create nested-ubuntu-focal --source-image-family=ubuntu-2004-lts --source-image-project=ubuntu-os-cloud --licenses https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx
 ```
